@@ -1,0 +1,128 @@
+/**********************
+*					  *
+*   Typography		  *
+*					  *
+***********************/
+
+//== Typography mixin
+//## Rem converter
+
+@function rem($pixels, $context: $baseFontSize) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1rem;
+}
+
+// Base font size creator
+@function baseFontSize($size, $font_family: $font-family) {
+	@return #{$size}px/#{$size+ 10}px $font_family;
+}
+// ============================================================
+
+//== Headings
+//
+//## Global font base including media query
+html,body {
+	font: baseFontSize($baseFontSize); // 14px/24px
+    // @media #{$medium-only} {
+    //     font: baseFontSize($baseFontSize - 2, $font-family); // 12px/22px
+    // }
+	@include media-breakpoint-down(sm) {
+	    font: baseFontSize($baseFontSize - 2, $font-family); // 10px/20px
+	}
+
+    // @media #{$small-and-down} {
+    //     font: baseFontSize($baseFontSize - 2, $font-family); // 10px/20px
+    // }
+	// @extend .base-text;
+}
+
+//## Global headers style
+
+// h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+// h1,h2,h3,h4,h5,h6,p { margin: 0; }
+//
+//
+//
+// h1,.h1 { font-size: rem($h1-fontsize); line-height: rem(63); }
+// h2,.h2 { font-size: rem($h2-fontsize); line-height: rem(54); }
+// h3,.h3 { font-size: rem($h3-fontsize); line-height: rem(45); }
+// h4,.h4 { font-size: rem($h4-fontsize); line-height: rem(38); }
+// h5,.h5 { font-size: rem($h5-fontsize); line-height: rem(28); }
+// h6,.h6 { font-size: rem($h6-fontsize); line-height: rem(16); }
+//
+.text-r { font-size: rem($baseFontSize); line-height: rem(24);}
+.text-xs { font-size: rem($small-x); line-height: rem(14); }
+.text-s { font-size: rem($small); line-height: rem(18); }
+.text-sem-m { font-size: rem($semi-medium); line-height: rem(24); }
+.text-m { font-size: rem($medium); line-height: rem(30); }
+.text-sem-l { font-size: rem($semi-large); line-height: rem(35); }
+.text-l { font-size: rem($large); line-height: rem(68); }
+.text-xl { font-size: rem($xl); line-height: rem(73); }
+.text-xxl { font-size: rem($xxl); line-height: rem(81); }
+
+
+//== Paragraphs
+//
+//## Global paragraph styles
+
+p {
+	font: baseFontSize($baseFontSize, $font-family);
+	margin: 0 0 1em 0;
+}
+
+
+//## Global text color styles
+// Text Styles
+.text {
+	// font-family
+	&-lato-thin {
+		font-family: $font-family-lato;
+		font-weight: 300;
+	}
+	// line height
+	&-lh-0 {
+		line-height: 0;
+	}
+	&-lh-s {
+		line-height: 1.7;
+	}
+
+	&-bold {
+		font-weight: 700;
+	}
+	&-first-cap {
+		&:first-letter {
+		    text-transform: uppercase;
+		}
+	}
+}
+
+a {
+    &.base-text {
+        &:hover {
+            @extend .hover-text;
+        }
+		&.selected {
+			@extend .hover-text;
+		}
+    }
+	&.no-hover {
+		&:hover {
+			color: color-maker('shoparu','base') !important;
+		}
+	}
+	&.cats-header {
+		&:hover {
+			i {
+				color: color-maker('shoparu','cats-header') !important;
+			}
+		}
+	}
+}

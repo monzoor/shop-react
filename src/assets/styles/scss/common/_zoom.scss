@@ -1,0 +1,21 @@
+.zoomContainer {
+    display: none;
+}
+@include media-breakpoint-up(lg) {
+    .zoomContainer {
+        display: block;
+    }
+    .zoomTint {
+        border: 1px solid red;
+        z-index: 99999;
+        display: block !important;
+    }
+
+    .main-img .main-img-wrapper {
+        z-index: auto !important;
+    }
+    .zoomLens {
+        width: 50px !important;
+        height: 50px !important;
+    }
+}

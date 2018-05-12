@@ -1,0 +1,11 @@
+.nav  li.active, .nav  li.active a{
+    color: $pink !important;
+}
+.profile-header {
+    min-height: 150px;
+}
+.zipcode {
+    .select2-container {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,17 @@
+.product {
+    .btn-group {
+        width: 100%;
+        .cart-counter {
+            width: 100%;
+            margin-left: 0;
+        }
+        .btn {
+            &:first-child {
+                border-right: 1px solid white;
+            }
+            &:last-child {
+                border-left: 1px solid white;
+            }
+        }
+    }
+}

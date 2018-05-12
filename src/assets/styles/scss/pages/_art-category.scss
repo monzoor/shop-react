@@ -1,0 +1,74 @@
+.painting-category-wrapper {
+    .category {
+        height: 290px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        transition: all 0.5s;
+        @include media-breakpoint-down(md) {
+            height: 125px;
+        }
+        &:hover {
+            background-size: 110%;
+            @include media-breakpoint-down(md) {
+                background-size: cover !important;
+            }
+        }
+    }
+    .cat-name {
+        text-shadow: 0px 3px 2px rgba(0, 0, 0, 1);
+        position: absolute;
+        bottom: 0;
+        transition: all .5s;
+        @include media-breakpoint-down(md) {
+            font-size: 20px;
+        }
+    }
+    a {
+        &:hover {
+            .cat-name{
+                bottom: 20px;
+            }
+        }
+    }
+}
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#paintingHero {
+    .carousel-control {
+        background-image: none;
+    }
+    .carousel-control {
+        background-image: none;
+        width: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: auto;
+        &.left {
+            left: 10px;
+        }
+        &.right {
+            right: 10px;
+        }
+    }
+    .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.5);
+        bottom: auto;
+        top: 70px;
+        right: 150px;
+        left: auto;
+        width: 320px;
+        @include media-breakpoint-down(md) {
+            top: auto;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+/**********************
+*                     *
+*   Global            *
+*                     *
+***********************/
+body {
+
+    // To facilitate consistent footer positioning
+    min-height: 100vh;
+    position: relative;
+    // margin-top: 30px;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Reset */
+* ul {
+    margin: 0;
+    padding: 0;
+}
+
+* img {
+    display: block;
+}
+
+* a {
+    text-decoration: none;
+}
+* {
+    outline: none
+}
+
+.content-wrapper {
+    min-height: calc(100vh - 200px);
+    .mobile & {
+        margin-top: 48px;
+    }
+}

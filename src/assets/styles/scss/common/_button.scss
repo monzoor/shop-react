@@ -1,0 +1,56 @@
+.btn {
+
+    &-shoparu-fill {
+        @extend .bg-button-fill;
+        @extend .white-text;
+        i {
+            font-size: 22px;
+        }
+        &:hover {
+            @extend .bg-hover;
+            @extend .white-text;
+        }
+    }
+    &-shoparu-fill-pink {
+        @extend .bg-hover;
+        @extend .white-text;
+        i {
+            font-size: 22px;
+        }
+        &:hover {
+            @extend .bg-hover;
+            @extend .white-text;
+        }
+    }
+    &-shoparu-line {
+        border: 1px solid color-maker("shoparu","button-text");
+        @extend .button-fill-text;
+        i {
+            font-size: 22px;
+        }
+        &.btn-sm {
+            i {
+                font-size: 14px;
+            }
+        }
+        &:hover, &:focus {
+            @extend .hover-text;
+            border: 1px solid color-maker("shoparu","hover");
+        }
+        &-disabled {
+            border-color: color-maker("shoparu","disable");
+            color: color-maker("shoparu","disable") !important;
+        }
+    }
+
+    &-blk {
+        @include media-breakpoint-down(md) {
+            display: block;
+            width: 100%;
+        }
+    }
+    &:disabled {
+        border-color: color-maker("shoparu","disable");
+        color: color-maker("shoparu","disable") !important;
+    }
+}

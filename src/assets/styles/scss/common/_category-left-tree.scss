@@ -1,0 +1,47 @@
+.category-tree-list {
+    list-style-position: inside;
+    li {
+        position: relative;
+        @extend .mb-2;
+        label {
+            font-weight: normal;
+        }
+        .active {
+            font-weight: bold;
+        }
+        &:first-child {
+            margin-top: 15px;
+        }
+        input {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: -4px;
+            top: 4px;
+            opacity: 0;
+            cursor: pointer;
+            margin-top: 0px;
+            + ul {
+                height: 24px;
+                margin: -25px 0 0 0;
+                width: 100%;
+                // background: url('../img/icon/right-arrow.svg') no-repeat 100% 0;
+                > li {
+                    display: none;
+                    margin-left: 20px;
+                    &:first-child {
+                        margin-top: 25px;
+                    }
+                }
+            }
+            &:checked + ul {
+                height: auto;
+                // background: url("../img/icon/down-arrow.svg") no-repeat 100% 0;
+                display: table;
+                > li {
+                    display: block;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.categories{
+    position: relative;
+    .div-hide {
+        display: none;
+    }
+    &:hover{
+        transition-delay: 0.3s;
+        .hover-categories-menu {
+            opacity: 1;
+            transition-delay: 0.3s;
+            visibility: visible;
+        }
+    }
+    .hover-categories-menu{
+        border-bottom: 1px solid black;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+        width: 620px;
+        min-height: 300px;
+        top: 38px;
+        left: 0;
+        transition: 0s;
+    }
+    li,p {
+        list-style: none;
+        margin-bottom: 5px;
+        a {
+            display: block;
+            text-decoration: none;
+        }
+        &.active {
+            a {
+                @extend .hover-text;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.cat-banner-wrapper {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    height: 210px;
+
+    @include media-breakpoint-up(xl) {
+        height: 254px;
+    }
+}
+@include media-breakpoint-down(md) {
+    .flex-direction-nav {
+        display: none;
+    }
+}

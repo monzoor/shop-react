@@ -1,0 +1,23 @@
+.categories-wrapper {
+    .category {
+          height: 290px;
+          background-repeat: no-repeat;
+          background-position: right bottom;
+          background-size: 100%;
+          transition: all 0.5s;
+          @include media-breakpoint-down(md) {
+            height: 125px;
+          }
+        &:hover {
+            background-size: 120%;
+            @include media-breakpoint-down(md) {
+              background-size: cover !important;
+            }
+        }
+    }
+    @include media-breakpoint-down(md) {
+        a {
+            font-size: 1.2rem;
+        }
+    }
+}

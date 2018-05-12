@@ -1,0 +1,92 @@
+.notfication-bubble-wrapper {
+    position: relative;
+    .notfication-bubble {
+        position: absolute;
+        top: -7px;
+        right: 0;
+        @include media-breakpoint-up(md) {
+            left: 15px;
+            top: 0;
+        }
+        width: 17px;
+        height: 17px;
+        line-height: 16px;
+        font-weight: normal;
+        border-radius: 50%;
+        text-align: center;
+    }
+}
+
+.dropdown-menu {
+    &.scroll {
+        max-height: 150px;
+        overflow-y: auto;
+    }
+}
+.shoparu-pagination {
+    a {
+        padding: 4px 10px 5px!important;
+        margin: -2px;
+    }
+}
+
+.full-toggle-button {
+    position: relative;
+    .navbar-toggle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        text-align: right;
+    }
+    button {
+        cursor: pointer;
+        span {
+            background-color: #3a3a3a;
+        }
+    }
+}
+.is-invalid {
+    ~ .invalid-feedback {
+        display: block;
+    }
+}
+.float-message {
+    width: 300px;
+    position: fixed;
+    top: 63px;
+    right: 16px;
+    z-index: 999;
+}
+.footer {
+    a {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.ups{
+    span {
+        line-height: 18px;
+    }
+}
+.error-image {
+    position: relative;
+    z-index: 1;
+    top: 15px;
+}
+
+.middle-center {
+    @include media-breakpoint-up(md) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: 0;
+        transform: translate(0 , -50%);
+    }
+}
+.icon-size{
+    width: 20px;
+    height: 20px;
+}

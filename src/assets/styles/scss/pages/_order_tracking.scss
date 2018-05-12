@@ -1,0 +1,103 @@
+.height-vh{
+  height: 50vh;
+}
+
+.stepper{
+  position: relative;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0;
+  list-style-type: none;
+  &:before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: calc(90% - 0px);
+    top: 26px;
+    left: 40px;
+    background-color: lightgrey;
+    z-index: -1;
+    @include media-breakpoint-down(sm){
+      width: calc(86% - 0px);
+      top: 16px;
+      left: 18px;
+    }
+  }
+  & .steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  & .step-number{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E9ECEE;
+    border-radius: 50%;
+    @include media-breakpoint-down(sm){
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
+
+  & .ongoing{
+    & .step-number{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #FB7DBC;
+      @include media-breakpoint-down(sm){
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+      &:before {
+        content: '\e823';
+        font-size: 18px;
+        font-family: 'shoparu';
+        color: #fff;
+        position: absolute;
+        @include media-breakpoint-down(sm){
+          font-size: 12px;
+        }
+      }
+    }
+    .step-text {
+      font-weight: bold;
+    }
+  }
+
+  & .active .step-number {
+    background-color:#0acdec ;
+    color: #fff;
+    &:before	{
+      content: '\e817';
+      font-size: 18px;
+      font-family: 'shoparu';
+      position: absolute;
+      @include media-breakpoint-down(sm){
+        font-size: 12px;
+      }
+    }
+  }
+  & .active .step-text {
+    font-weight: bold;
+  }
+  & .done .step-number{
+    background-color: #fff;
+  }
+  & .step-text {
+    @include media-breakpoint-down(sm){
+      font-size: 10px;
+      line-height: 16px;
+    }
+  }
+}

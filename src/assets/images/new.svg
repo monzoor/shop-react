@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109.3 122.4">
+      <g class="rotate">
+        <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="101.804" y1="22.495" x2="5.804" y2="25.395" gradientTransform="matrix(1 0 0 -1 0 124)">
+            <stop offset="0" stop-color="#f3736c" />
+            <stop offset="1" stop-color="#532e8b" />
+        </linearGradient>
+        <path d="M45.3 77.2l-32 32c17.7 17.7 46.3 17.7 64 0 5.8-5.8 9.7-12.8 11.7-20.3-15 4-32" fill="url(#a)" />
+        <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="94.504" y1="57.097" x2="-18.395" y2="50.597" gradientTransform="matrix(1 0 0 -1 0 124)">
+            <stop offset="0" stop-color="#f3736c" />
+            <stop offset="1" stop-color="#532e8b" />
+        </linearGradient>
+        <path d="M77.3 45.2l-32 32C57.1 89 73.9 93 89 89c4-15.2 0-32-11.7-43.8z" fill="url(#b)" />
+      </g>
+      <g class="slider">
+          <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="60.809" y1="128.271" x2="82.609" y2="72.071" gradientTransform="matrix(1 0 0 -1 0 124)">
+              <stop offset="0" stop-color="#0779b3" />
+              <stop offset=".2" stop-color="#308baf" />
+              <stop offset=".4" stop-color="#4ea2a6" />
+              <stop offset=".6" stop-color="#61b49d" />
+              <stop offset=".8" stop-color="#6dbf97" />
+              <stop offset="1" stop-color="#70c495" />
+          </linearGradient>
+          <path d="M45.4 13.1c-5.8 5.8-9.7 12.8-11.7 20.3 15-4 32 0 43.7 11.7l32-32c-17.7-17.6-46.4-17.6-64 0z" fill="url(#c)" />
+          <linearGradient id="d" gradientUnits="userSpaceOnUse" x1="54.738" y1="98.05" x2="54.738" y2="31.65" gradientTransform="matrix(1 0 0 -1 0 124)">
+              <stop offset="0" stop-color="#0779b3" />
+              <stop offset=".2" stop-color="#308baf" />
+              <stop offset=".4" stop-color="#4ea2a6" />
+              <stop offset=".6" stop-color="#61b49d" />
+              <stop offset=".8" stop-color="#6dbf97" />
+              <stop offset="1" stop-color="#70c495" />
+          </linearGradient>
+          <path d="M45.4 77.1l32-32c-12-11.8-28.6-15.7-43.7-11.7-4 15-.2 32 11.7 43.7z" fill="url(#d)" />
+          <g transform="rotate(-45.001 50.476 50.245)">
+              <ellipse cx="50.5" cy="50.2" rx="11.9" ry="11.9" fill="#fff" />
+              <ellipse cx="50.5" cy="50.2" rx="3.9" ry="3.9" fill="#010101" />
+          </g>
+      </g>
+  </svg>

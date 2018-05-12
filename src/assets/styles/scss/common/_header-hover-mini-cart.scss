@@ -1,0 +1,27 @@
+.mini-cart {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  right: 0;
+  width: 500px;
+  z-index: 9999;
+  transform: translateY(10%);
+  top: 11px;
+  right: 15px;
+  .cart-info {
+      .row {
+          min-height: 1.7rem;
+      }
+  }
+  ul {
+      max-height: 220px;
+      overflow-y: auto;
+  }
+}
+.hover-cart {
+    &:hover .mini-cart {
+      opacity: 1;
+      visibility: visible;
+    }
+}

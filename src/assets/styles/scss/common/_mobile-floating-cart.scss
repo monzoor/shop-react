@@ -1,0 +1,126 @@
+.mobile-floating-cart {
+    border-top: 1px solid white;
+    height: 42px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 100;
+    .btn {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #00ACE7;
+    }
+    .mobile-cart {
+        position: relative;
+        #hopper {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 50%;
+            top: 4px;
+            right: 10px;
+            padding-top: 3px;
+
+        }
+    }
+}
+.bounce {
+    animation: bounce .4s 2 alternate;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+.overflow{
+    overflow: hidden;
+}
+.mobile-floating-cart-list {
+    position: fixed;
+    background-color: white;
+    left: -200%;
+    width: 100%;
+    transition: all .5s;
+    z-index: 9999;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    &.show {
+        transition: all .5s;
+        left: 0;
+    }
+    .mobile-floating-cart-list-buttons {
+        left: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+    }
+    .btn {
+        i {
+            font-size: 16px;
+        }
+    }
+    .product-price {
+        line-height: 18px;
+    }
+    .lists-header {
+        height: 49px;
+    }
+    .added-products {
+        overflow: auto;
+        position: absolute;
+        top: 50px;
+        height: calc(100vh - 87px);
+    }
+    .delete {
+        margin-top: -12px;
+        i {
+            font-size: 18px;
+        }
+    }
+    .product-quantity {
+        font-size: 17px;
+        line-height: 24px;
+    }
+    .product-price {
+        a {
+            font-size: 14px;
+        }
+    }
+    .col-3.p-0.my-auto {
+        > p {
+            font-size: 14px;
+        }
+    }
+
+    .lists {
+        >li {
+            @extend .border;
+            border-left: 0 !important;
+            border-right: 0 !important;
+            border-top: 0 !important;
+            &:first-child {
+
+            }
+        }
+    }
+    #removeItem {
+        display: block;
+        margin-top: -9px;
+    }
+}

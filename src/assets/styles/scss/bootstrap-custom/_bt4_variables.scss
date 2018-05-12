@@ -1,0 +1,27 @@
+@import "01_color-palette-overwrite";
+@import "02_shoparu-color-palette";
+
+$body-color:                     color-maker('shoparu','base') !default;
+$navbar-light-hover-color:       color-maker('shoparu','hover') !default;
+$navbar-light-color:             color-maker('shoparu','base') !default;
+$navbar-toggler-border-radius:   0 !default;
+$input-border-radius:            0 !default;
+$btn-border-radius:              0 !default;
+$border-color:                   color-maker('shoparu','border') !default;
+$input-focus-border-color:       $border-color !default;
+$input-border-color:             $border-color !default;
+$input-btn-focus-color:          rgba($border-color, .5) !default;
+$link-hover-decoration:          none !default;
+$link-hover-color:               color-maker('shoparu','hover') !default;
+$link-color:                     color-maker('shoparu','link')!default;
+
+$text-muted:                     color-maker('shoparu','muted')!default;
+$border-radius-lg:               0 !default;
+$border-radius:                  0 !default;
+$input-btn-focus-width:          1px !default;
+
+$input-btn-focus-box-shadow:     0 0 2px $input-btn-focus-width $input-btn-focus-color !default;
+
+$breadcrumb-divider:             ">" !default;
+$breadcrumb-bg:                  transparent !default;
+$breadcrumb-padding-x:           0 !default;

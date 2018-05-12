@@ -1,0 +1,30 @@
+button:focus {
+  outline: 0px dotted;
+  outline: 0px auto -webkit-focus-ring-color;
+}
+.btn {
+    cursor: pointer;
+    @extend .text-uppercase;
+}
+.custom-select:focus {
+    border-color: $border-color;
+    outline: none;
+}
+
+.btn-group {
+    .btn {
+        border-radius: 0;
+    }
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.btn-secondary:not([disabled]):not(.disabled):active, .btn-secondary:focus {
+    box-shadow: 0 0 0 0px rgba(0, 172, 231, 0.5);
+}

@@ -1,0 +1,95 @@
+.slideshow {
+    margin: auto;
+    min-height: 570px;
+}
+.disabled i {
+    color: whitesmoke;
+}
+
+.cycle-carousel-wrap img {
+    margin: 0 0 13px 0;
+    border: 1px solid white;
+    &.selected {
+        border: 1px solid color-maker("shoparu", "border");
+    }
+}
+.main-img {
+    margin-top: 26px;
+    &:hover + .main-pager-wrapper a {
+        opacity: 1;
+    }
+    .main-pager-wrapper a#next1 {
+        right: 0;
+    }
+    .main-img-wrapper {
+        width: 100%;
+        text-align: center;
+        .product-img {
+            @extend .img-fluid;
+            display: inline-block;
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    .slideshow {
+        margin: auto;
+        min-height: 140px;
+        position: relative;
+        margin-top: 10px;
+    }
+    .cycle-carousel-wrap img {
+        width: 100px !important;
+    }
+    .slider-nav {
+        position: absolute;
+        top: 43%;
+        &.left {
+            left: -15px;
+        }
+        &.left a i:before {
+            content: '\e80a';
+            font-family: "shoparu";
+        }
+        &.right {
+            a i:before {
+                content: '\e80b';
+                font-family: "shoparu";
+            }
+            right: -15px;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .main-img {
+        // height: 10vh !important;
+        margin-top: 0;
+        // border: 1px solid red;
+        .main-img-wrapper {
+            width: 40vw;
+            right: 0;
+            margin: 0 auto;
+        }
+    }
+    .cycle-carousel-wrap img {
+        width: 35px !important;
+    }
+    .slideshow {
+        margin-top: 0px;
+        min-height: 50px;
+    }
+    .cycle-carousel-wrap img {
+        margin-bottom: 0px;
+    }
+    .slider-nav {
+        &.left {
+            left: 0;
+        }
+        &.right {
+            right: 0;
+        }
+    }
+}

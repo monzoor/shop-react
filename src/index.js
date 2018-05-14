@@ -4,13 +4,13 @@ import App from './components/App';
 import './assets/styles/App.css';
 import registerServiceWorker from './registerServiceWorker';
 
-import { BrowserRouter} from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 
 
 ReactDOM.render(
-    <BrowserRouter>
+    <Router>
         <App/>
-    </BrowserRouter>
+    </Router>
     ,
     document.getElementById('root')
 );

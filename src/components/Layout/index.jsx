@@ -4,12 +4,8 @@ import Footer from '../Common/Footer'
 export const MainLayout = props => (
   <div>
     <Header/>
-    <div className="container">
-        <div className="row">
-            <div className="col-12">
-                {props.children}
-            </div>
-        </div>
+    <div>
+        {props.children}
     </div>
     <Footer/>
   </div>

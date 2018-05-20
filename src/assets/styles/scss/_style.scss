@@ -1,9 +1,9 @@
 /* generated with grunt-sass-globbing */
 
 @import "bootstrap-custom/bt4_variables";
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
-@import "vendor/datepicker";
-@import "vendor/flexslider";
+@import "./bootstrap/scss/bootstrap";
+@import "vendor/import";
+@import "vendor/vendor-custom";
 @import "common/00_bootstrap-reset";
 @import "common/02_shoparu_variables";
 @import "common/03_global";

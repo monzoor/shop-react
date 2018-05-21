@@ -1,22 +1,22 @@
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
-import {MainLayout} from './../Layout'
+import {MainLayout} from './../components/Layout'
 
-import Home from './../Pages/Home/Home';
+import Home from './../components/Pages/Home/Home';
 
-import Login from './../Pages/Auth/Login';
-import SignUp from './../Pages/Auth/Signup';
+import Login from './../components/Pages/Auth/Login';
+import SignUp from './../components/Pages/Auth/Signup';
 
-import Categories from './../Pages/Product/Categories';
+import Categories from './../components/Pages/Product/Categories';
 
-import Product from './../Pages/Auth/Signup';
-import Shopping from './../Pages/Auth/Signup';
+import Product from './../components/Pages/Auth/Signup';
+import Shopping from './../components/Pages/Auth/Signup';
 
-import Search from './../Pages/Auth/Signup';
-import User from './../Pages/Auth/Signup';
+import Search from './../components/Pages/Auth/Signup';
+import User from './../components/Pages/Auth/Signup';
 
 
-import FourOFour from './../404'
+import FourOFour from './../components/404'
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
   <Route {...rest} render={props => (

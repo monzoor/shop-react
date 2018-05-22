@@ -10,7 +10,6 @@ class Home extends Component {
         // this.props.dispatch(fetchPosts())
     }
     render() {
-        console.log("dudubar");
         const postItems = this.props.posts.map(post => (
             <div key={post.id}>
                 <h3>{post.title}</h3>
@@ -30,7 +29,6 @@ class Home extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         posts: state.posts.items
     };

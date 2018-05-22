@@ -9,9 +9,9 @@ export function fetchPosts() {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'get',
         }).then((response) => {
+            console.log(response);
             if (response.ok) {
                 return response.json().then((posts) => {
-                    console.log(posts);
                     dispatch({
                         type: "FETCH_POSTS",
                         payload: posts

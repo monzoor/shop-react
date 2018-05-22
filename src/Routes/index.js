@@ -1,19 +1,19 @@
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
-import {MainLayout} from './../components/Layout'
+import MainLayout from '../components/Layout/index'
 
-import Home from './../components/Pages/Home/Home';
+import Home from '../components/Pages/Home/Home';
 
-import Login from './../components/Pages/Auth/Login';
-import SignUp from './../components/Pages/Auth/Signup';
+import Login from '../components/Pages/Auth/Login';
+import SignUp from '../components/Pages/Auth/Signup';
 
-import Categories from './../components/Pages/Product/Categories';
+import Categories from '../components/Pages/Product/Categories';
 
-import Product from './../components/Pages/Auth/Signup';
-import Shopping from './../components/Pages/Auth/Signup';
+import Product from '../components/Pages/Auth/Signup';
+import Shopping from '../components/Pages/Auth/Signup';
 
-import Search from './../components/Pages/Auth/Signup';
-import User from './../components/Pages/Auth/Signup';
+import Search from '../components/Pages/Auth/Signup';
+import User from '../components/Pages/Auth/Signup';
 
 
 import FourOFour from './../components/404'

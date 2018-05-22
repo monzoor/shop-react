@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import { fetchPosts } from '../../../actions/postActions'
 // import Slider from '../../Common/Slider';
 
 class Home extends Component {
-    componentWillMount() {
-        console.log('=====',this.props.fetchPosts);
-        this.props.fetchPosts();
+    componentDidMount() {
+        // this.props.dispatch(fetchPosts())
     }
     render() {
+        console.log("dudubar");
         const postItems = this.props.posts.map(post => (
             <div key={post.id}>
                 <h3>{post.title}</h3>
@@ -26,9 +27,14 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    posts: state.posts.items
-})
 
 
-export default connect(mapStateToProps, { fetchPosts })(Home);
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        posts: state.posts.items
+    };
+};
+
+
+export default withRouter(connect(mapStateToProps)(Home))

@@ -6,7 +6,8 @@ import mainLogo from './../../assets/images/shoparu.svg';
 
 class Header extends Component {
     render() {
-        return (<header className="clearfix">
+        return (
+            <header className="clearfix">
             <nav className="navbar navbar-expand-lg navbar-light header " id="header">
                 <a hred="#" className="navbar-toggler border-0 bg-transparent notfication-bubble-wrapper px-0 py-0">
                     <div className="hamburger">

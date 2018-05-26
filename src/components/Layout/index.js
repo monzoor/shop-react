@@ -1,11 +1,12 @@
-import Header from '../Common/Header';
-import Footer from '../Common/Footer';
+import Header from './Header';
+import Footer from './Footer';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
-import { fetchPosts } from '../../actions/postActions'
+import { fetchPosts } from '../../actions/postActions';
+import { getCategories } from '../../actions/categoryActions';
 // import Slider from '../../Common/Slider';
 
 class MainLayout extends Component {
@@ -13,12 +14,14 @@ class MainLayout extends Component {
         super(props);
     }
     componentDidMount() {
-        this.props.dispatch(fetchPosts())
+        // this.props.dispatch(fetchPosts())
+        this.props.dispatch(getCategories());
     }
     render() {
+        // console.log(this.props);
         return (
             <div>
-              <Header/>
+              <Header {...this.props}/>
                   <div>
                       {this.props.children}
                   </div>
@@ -31,8 +34,9 @@ class MainLayout extends Component {
 
 
 const mapStateToProps = (state) => {
+    // console.log(state);
     return {
-        posts: state.posts.items
+        allCategories: state.allCategories.categories
     };
 };
 

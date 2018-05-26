@@ -1,11 +1,32 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import _ from 'lodash';
 // import {Helmet} from 'react-helmet';
 
 import mainLogo from './../../assets/images/shoparu.svg';
 
 class Header extends Component {
+
     render() {
+        // console.log(this.props.allCategories );
+        // const postItems = this.props.posts.map(post => (
+        //     <div key={post.id}>
+        //         <h3>{post.title}</h3>
+        //         <p>{post.body}</p>
+        //     </div>
+        // ))
+
+        // const parentCategories = Object.entries(this.props.allCategories).forEach(([key, value]) => (
+        //         // console.log(key, value)
+        //         // console.log(value.slug);
+        //         <li key={key}>value.slug</li>
+        //     )
+        // );
+        const parentCategories = _.map(this.props.allCategories, function (category){
+            return (
+                <li key={category.id}>{category.slug}</li>
+            )
+        })
         return (
             <header className="clearfix">
             <nav className="navbar navbar-expand-lg navbar-light header " id="header">
@@ -24,6 +45,17 @@ class Header extends Component {
                             <i className="icon-category-9-box link-text"></i>
                             <span className="float-right ml-2">Categories</span>
                         </Link>
+                        <div className="hover-categories-menu bg-white">
+                            <div className="col-md-12 p-3">
+                                <div className="row">
+                                    <div className="col-5" id="parentCat">
+                                        <ul>
+                                            {parentCategories}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 <div className="col-7 col-lg-7 px-0 py-lg-2 py-0">
@@ -63,5 +95,6 @@ class Header extends Component {
         </header>);
     }
 }
+
 
 export default Header;

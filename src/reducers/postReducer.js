@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST } from '../actions/types';
+import { FETCH_POSTS, NEW_POST, CATEGORIES } from '../actions/types';
 
 
 const initialState = {
@@ -7,7 +7,13 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
+    // console.log('====1===',action.type);
     switch (action.type) {
+        case CATEGORIES:
+            return {
+                ...state,
+                cats: action.payload
+            }
         case FETCH_POSTS:
             return {
                 ...state,

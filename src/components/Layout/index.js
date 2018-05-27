@@ -4,6 +4,7 @@ import Footer from './Footer';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { fetchPosts } from '../../actions/postActions';
 import { getCategories } from '../../actions/categoryActions';
@@ -13,7 +14,7 @@ class MainLayout extends Component {
     constructor(props){
         super(props);
     }
-    componentDidMount() {
+    componentWillMount() {
         // this.props.dispatch(fetchPosts())
         this.props.dispatch(getCategories());
     }
@@ -32,13 +33,19 @@ class MainLayout extends Component {
 }
 
 
-
 const mapStateToProps = (state) => {
     // console.log(state);
     return {
         allCategories: state.allCategories.categories
     };
 };
+
+// TODO
+// MainLayout.propTypes = {
+//     getCategories: PropTypes.func,
+//     allCategories: PropTypes.object
+// }
+
 
 
 export default withRouter(connect(mapStateToProps)(MainLayout))

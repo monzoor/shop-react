@@ -22,6 +22,7 @@ export function getCategories () {
 }
 
 function status(res) {
+    // TODO: error handle
     if (!res.ok) {
         throw new Error(res.statusText);
     }

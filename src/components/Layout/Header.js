@@ -6,25 +6,20 @@ import _ from 'lodash';
 import mainLogo from './../../assets/images/shoparu.svg';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            subCategory: ''
+        }
+    }
 
     render() {
-        // console.log(this.props.allCategories );
-        // const postItems = this.props.posts.map(post => (
-        //     <div key={post.id}>
-        //         <h3>{post.title}</h3>
-        //         <p>{post.body}</p>
-        //     </div>
-        // ))
-
-        // const parentCategories = Object.entries(this.props.allCategories).forEach(([key, value]) => (
-        //         // console.log(key, value)
-        //         // console.log(value.slug);
-        //         <li key={key}>value.slug</li>
-        //     )
-        // );
-        const parentCategories = _.map(this.props.allCategories, function (category){
+        const allCategory = _.orderBy(this.props.allCategories, ['priority', ['asc']]);
+        // console.log(allCategory);
+        const parentCategories = _.map(allCategory, function (category){
+            console.log(category);
             return (
-                <li key={category.id}>{category.slug}</li>
+                <li key={category.id}><Link to={`/product/category/${category.slug}`}>{category.slug}</Link></li>
             )
         })
         return (
@@ -52,6 +47,9 @@ class Header extends Component {
                                         <ul>
                                             {parentCategories}
                                         </ul>
+                                    </div>
+                                    <div className="col-md-6 child-cat">
+                                        
                                     </div>
                                 </div>
                             </div>

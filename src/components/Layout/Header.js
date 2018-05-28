@@ -9,21 +9,49 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            subCategory: ''
+            childCategoryLevelOne: '',
+            parentCategoryName: '',
+            parentCategorySlug: ''
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        // console.log(nextProps, this.props);
+        if (nextProps.allCategories !== this.props.allCategories) {
+            // this.setState({count:nextProps.value});
+            console.log('pkkk');
+            this.setState({
+                childCategoryLevelOne: _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0].kids,
+                parentCategoryName: _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0].name,
+                parentCategorySlug: _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0].slug
+            })
+        }
+    }
+
+    createMenuListItems = (obj) => {
+        const listItems = _.map(obj.categories, function(category) {
+            // console.log(category);
+            return (<li key={category.id}>
+                <Link className="base-text" to={`/product/category/${category.slug}`}>{category.slug}</Link>
+            </li>)
+        });
+        if (!obj.hasParent) {
+            return listItems
+        }
+        // console.log(obj.categories);
+        return {subCategoryTitle: (<Link className="lead text-bold base-text" to={`/product/category/${obj.parentCategorySlug}`}>{obj.parentCategoryName}</Link>), subCategoryListItems: listItems}
+    }
+
     render() {
+        // console.log(this.state);
+
         const allCategory = _.orderBy(this.props.allCategories, ['priority', ['asc']]);
-        // console.log(allCategory);
-        const parentCategories = _.map(allCategory, function (category){
-            console.log(category);
-            return (
-                <li key={category.id}><Link to={`/product/category/${category.slug}`}>{category.slug}</Link></li>
-            )
-        })
-        return (
-            <header className="clearfix">
+        // console.log(allCategory[0]);
+
+        const parentCategories = this.createMenuListItems({categories: allCategory, hasParent: false});
+        const childCategories = this.createMenuListItems({categories: this.state.childCategoryLevelOne, hasParent: true, parentCategoryName: this.state.parentCategoryName, parentCategorySlug: this.state.parentCategorySlug});
+        // console.log(childCategories);
+        return (<header className="clearfix">
             <nav className="navbar navbar-expand-lg navbar-light header " id="header">
                 <a hred="#" className="navbar-toggler border-0 bg-transparent notfication-bubble-wrapper px-0 py-0">
                     <div className="hamburger">
@@ -49,7 +77,16 @@ class Header extends Component {
                                         </ul>
                                     </div>
                                     <div className="col-md-6 child-cat">
-                                        
+                                        <div className="row">
+                                            <div className="col-md-12">
+                                                <p>
+                                                    {childCategories.subCategoryTitle}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            {childCategories.subCategoryListItems}
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -93,6 +130,5 @@ class Header extends Component {
         </header>);
     }
 }
-
 
 export default Header;

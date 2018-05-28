@@ -14,7 +14,7 @@ class MainLayout extends Component {
     constructor(props){
         super(props);
     }
-    componentWillMount() {
+    componentDidMount() {
         // this.props.dispatch(fetchPosts())
         this.props.dispatch(getCategories());
     }

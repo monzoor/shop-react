@@ -6,6 +6,11 @@ import _ from 'lodash';
 
 import mainLogo from './../../assets/images/shoparu.svg';
 
+import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import { getCategories } from '../../actions/categoryActions';
+
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -13,77 +18,43 @@ class Header extends Component {
             childCategoryLevelOne: '',
             parentCategoryName: '',
             parentCategorySlug: '',
-            active: null
+            activeCategoryId: null
         }
+
         this.onMouseEnter = this.hoverShow.bind(this);
     }
 
+    componentDidMount() {
+        this.props.dispatch(getCategories());
+    }
     componentWillReceiveProps(nextProps) {
-        // console.log(nextProps, this.props);
         if (nextProps.allCategories !== this.props.allCategories) {
-            // this.setState({count:nextProps.value});
             const firstCategory = _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0];
             this.setState({
                 childCategoryLevelOne: firstCategory.kids,
                 parentCategoryName: firstCategory.name,
                 parentCategorySlug: firstCategory.slug,
-                active: firstCategory.id
+                activeCategoryId: firstCategory.id
             })
         }
     }
 
-    // onMouseEnter = (id) => {
-    //     console.log(id);
-    // }
-    // getHoverState = (id) => {
-    //     console.log('==state', id);
-    // }
-
     hoverShow = function(hoverCategory, parent, e) {
-          // this.refs.card.getDOMNode().className = this.refs.card.getDOMNode().className + ' active';
-          // e.preventDefault();
-          // console.log('-----', hoverCategory.kids, parent);
-          // console.log(parent);
           if(parent) {
               return;
           }
           this.setState({
-              childCategoryLevelOne: (!parent) ? hoverCategory.kids : null,
-              parentCategoryName: (!parent) ? hoverCategory.name : null,
-              parentCategorySlug: (!parent) ? hoverCategory.slug : null,
-              active: (!parent) ? hoverCategory.id : null,
-          })
-          // if(hoverCategory.kids) {
-              // console.log('====');
-
-          // }
-          // if(id) {
-          //     const findHoverChilds = _.find(this.props.allCategories, function(category) {
-          //
-          //         return category.id === id;
-          //         // return _.findIndex(category, function(chi))
-          //     });
-          //     // const firstCategory = _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0];
-          //
-          //     this.setState({
-          //         childCategoryLevelOne: findHoverChilds.kids,
-          //         parentCategoryName: findHoverChilds.name,
-          //         parentCategorySlug: findHoverChilds.slug,
-          //         active: true
-          //     })
-          // }
+              childCategoryLevelOne: hoverCategory.kids,
+              parentCategoryName: hoverCategory.name,
+              parentCategorySlug: hoverCategory.slug,
+              activeCategoryId: hoverCategory.id
+          });
     }
     createMenuListItems = (obj) => {
-        // console.log(this.cardShow);
         const self = this;
         const listItems = _.map(obj.categories, function(category, index) {
-            // console.log(category);
-            // className={index === 0 ? (obj.active ? 'active' : '' ): ''}
-            // onMouseEnter={() => this.cardShow()}
-            // onMouseEnter={(category.parent !== 0 ) ? self.hoverShow.bind(self, category.id) : self.hoverShow.bind(self, false)}
-            // console.log(obj.active, category.id);
             return (
-                <li key={category.id} className={(obj.active === category.id) ? "active" : ''}  onMouseEnter={self.hoverShow.bind(self, category, obj.hasParent)}>
+                <li key={category.id} className={(obj.activeCategoryId === category.id) ? "active" : ''}  onMouseEnter={self.hoverShow.bind(self, category, obj.hasParent)}>
                     <Link className="base-text" to={`/product/category/${category.slug}`} >{category.name}</Link>
                 </li>
             )
@@ -91,7 +62,6 @@ class Header extends Component {
         if (!obj.hasParent) {
             return listItems
         }
-        // console.log(listItems.length);
         return {
             subCategoryTitle: (listItems.length) ?
             (
@@ -102,16 +72,13 @@ class Header extends Component {
     }
 
     render() {
-        // console.log(this.state);
 
         const allCategory = _.orderBy(this.props.allCategories, ['priority', ['asc']]);
-        // console.log(allCategory);
 
         const parentCategories = this.createMenuListItems({
             categories: allCategory,
             hasParent: false,
-            active: this.state.active,
-            self: this
+            activeCategoryId: this.state.active,
         });
         const childCategories = this.createMenuListItems({
             categories: this.state.childCategoryLevelOne,
@@ -119,7 +86,7 @@ class Header extends Component {
             parentCategoryName: this.state.parentCategoryName,
             parentCategorySlug: this.state.parentCategorySlug,
         });
-        // console.log(childCategories);
+
         return (<header className="clearfix">
             <nav className="navbar navbar-expand-lg navbar-light header " id="header">
                 <a hred="#" className="navbar-toggler border-0 bg-transparent notfication-bubble-wrapper px-0 py-0">
@@ -200,4 +167,11 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        allCategories: state.allCategories.categories
+    };
+};
+
+export default withRouter(connect(mapStateToProps)(Header))
+// export default Header;

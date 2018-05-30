@@ -11,9 +11,9 @@ import { getCategories } from '../../actions/categoryActions';
 // import Slider from '../../Common/Slider';
 
 class MainLayout extends Component {
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
     componentDidMount() {
         // this.props.dispatch(fetchPosts())
         this.props.dispatch(getCategories());
@@ -22,7 +22,7 @@ class MainLayout extends Component {
         // console.log(this.props);
         return (
             <div>
-              <Header {...this.props}/>
+              <Header/>
                   <div>
                       {this.props.children}
                   </div>
@@ -36,7 +36,7 @@ class MainLayout extends Component {
 const mapStateToProps = (state) => {
     // console.log(state);
     return {
-        allCategories: state.allCategories.categories
+        // allCategories: state.allCategories.categories
     };
 };
 

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import {Link} from 'react-router-dom';
 import _ from 'lodash';
 // import {Helmet} from 'react-helmet';
@@ -11,45 +12,113 @@ class Header extends Component {
         this.state = {
             childCategoryLevelOne: '',
             parentCategoryName: '',
-            parentCategorySlug: ''
+            parentCategorySlug: '',
+            active: null
         }
+        this.onMouseEnter = this.hoverShow.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
         // console.log(nextProps, this.props);
         if (nextProps.allCategories !== this.props.allCategories) {
             // this.setState({count:nextProps.value});
-            console.log('pkkk');
+            const firstCategory = _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0];
             this.setState({
-                childCategoryLevelOne: _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0].kids,
-                parentCategoryName: _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0].name,
-                parentCategorySlug: _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0].slug
+                childCategoryLevelOne: firstCategory.kids,
+                parentCategoryName: firstCategory.name,
+                parentCategorySlug: firstCategory.slug,
+                active: firstCategory.id
             })
         }
     }
 
+    // onMouseEnter = (id) => {
+    //     console.log(id);
+    // }
+    // getHoverState = (id) => {
+    //     console.log('==state', id);
+    // }
+
+    hoverShow = function(hoverCategory, parent, e) {
+          // this.refs.card.getDOMNode().className = this.refs.card.getDOMNode().className + ' active';
+          // e.preventDefault();
+          // console.log('-----', hoverCategory.kids, parent);
+          // console.log(parent);
+          if(parent) {
+              return;
+          }
+          this.setState({
+              childCategoryLevelOne: (!parent) ? hoverCategory.kids : null,
+              parentCategoryName: (!parent) ? hoverCategory.name : null,
+              parentCategorySlug: (!parent) ? hoverCategory.slug : null,
+              active: (!parent) ? hoverCategory.id : null,
+          })
+          // if(hoverCategory.kids) {
+              // console.log('====');
+
+          // }
+          // if(id) {
+          //     const findHoverChilds = _.find(this.props.allCategories, function(category) {
+          //
+          //         return category.id === id;
+          //         // return _.findIndex(category, function(chi))
+          //     });
+          //     // const firstCategory = _.orderBy(nextProps.allCategories, ['priority', ['asc']])[0];
+          //
+          //     this.setState({
+          //         childCategoryLevelOne: findHoverChilds.kids,
+          //         parentCategoryName: findHoverChilds.name,
+          //         parentCategorySlug: findHoverChilds.slug,
+          //         active: true
+          //     })
+          // }
+    }
     createMenuListItems = (obj) => {
-        const listItems = _.map(obj.categories, function(category) {
+        // console.log(this.cardShow);
+        const self = this;
+        const listItems = _.map(obj.categories, function(category, index) {
             // console.log(category);
-            return (<li key={category.id}>
-                <Link className="base-text" to={`/product/category/${category.slug}`}>{category.slug}</Link>
-            </li>)
+            // className={index === 0 ? (obj.active ? 'active' : '' ): ''}
+            // onMouseEnter={() => this.cardShow()}
+            // onMouseEnter={(category.parent !== 0 ) ? self.hoverShow.bind(self, category.id) : self.hoverShow.bind(self, false)}
+            // console.log(obj.active, category.id);
+            return (
+                <li key={category.id} className={(obj.active === category.id) ? "active" : ''}  onMouseEnter={self.hoverShow.bind(self, category, obj.hasParent)}>
+                    <Link className="base-text" to={`/product/category/${category.slug}`} >{category.name}</Link>
+                </li>
+            )
         });
         if (!obj.hasParent) {
             return listItems
         }
-        // console.log(obj.categories);
-        return {subCategoryTitle: (<Link className="lead text-bold base-text" to={`/product/category/${obj.parentCategorySlug}`}>{obj.parentCategoryName}</Link>), subCategoryListItems: listItems}
+        // console.log(listItems.length);
+        return {
+            subCategoryTitle: (listItems.length) ?
+            (
+                <Link className="lead text-bold base-text" to={`/product/category/${obj.parentCategorySlug}`}>{obj.parentCategoryName}</Link>
+            ): '',
+            subCategoryListItems: listItems
+        }
     }
 
     render() {
         // console.log(this.state);
 
         const allCategory = _.orderBy(this.props.allCategories, ['priority', ['asc']]);
-        // console.log(allCategory[0]);
+        // console.log(allCategory);
 
-        const parentCategories = this.createMenuListItems({categories: allCategory, hasParent: false});
-        const childCategories = this.createMenuListItems({categories: this.state.childCategoryLevelOne, hasParent: true, parentCategoryName: this.state.parentCategoryName, parentCategorySlug: this.state.parentCategorySlug});
+        const parentCategories = this.createMenuListItems({
+            categories: allCategory,
+            hasParent: false,
+            active: this.state.active,
+            self: this
+        });
+        const childCategories = this.createMenuListItems({
+            categories: this.state.childCategoryLevelOne,
+            hasParent: true,
+            parentCategoryName: this.state.parentCategoryName,
+            parentCategorySlug: this.state.parentCategorySlug,
+        });
         // console.log(childCategories);
         return (<header className="clearfix">
             <nav className="navbar navbar-expand-lg navbar-light header " id="header">

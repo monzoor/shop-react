@@ -78,7 +78,7 @@ class Header extends Component {
         const parentCategories = this.createMenuListItems({
             categories: allCategory,
             hasParent: false,
-            activeCategoryId: this.state.active,
+            activeCategoryId: this.state.activeCategoryId,
         });
         const childCategories = this.createMenuListItems({
             categories: this.state.childCategoryLevelOne,
